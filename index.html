@@ -1,0 +1,285 @@
+<!doctype html>
+<!--
+  T-7r4V3x — portage de GNOME Tetravex
+  Copyright (C) 2010-2013 Robert Ancell
+  Copyright (C) 2019 Arnaud Bonatti
+  Copyright (C) 2026 Drusus (Gens Claudia)
+  Licence : GNU GPL version 2 ou ultérieure (fichier LICENSE). Sources : ce que votre navigateur charge.
+
+  Page unique : le balisage de tous les écrans (accueil, partie, aide, options, à propos) et la feuille de
+  style en ligne. Elle est en ligne exprès : le serveur du portail livre les .css en application/octet-stream,
+  que les navigateurs refusent. Toute couleur vient d'une variable CSS posée par src/themes.js ; les valeurs
+  ci-dessous ne sont que le repli du thème « Épuré clair ».
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="theme-color" content="#f5f6f8">
+<meta name="color-scheme" content="light dark">
+<title>T-7r4V3x</title>
+<link rel="manifest" href="manifest.webmanifest" crossorigin="use-credentials">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<style>
+:root{--bg:#f5f6f8;--fg:#1d2330;--muted:#6a7385;--acc:#2f6fed;--btn-bg:#fff;--btn-fg:#1d2330;--btn-bd:#d6dae2;--btn-active:#e7ebf4;--btn-radius:12px;--btn-shadow:none;--board-bg:#dfe3ea;--board-radius:8px;--board-gap:3px;--cell-bg:#fff;--cell-ok:#e6f0ff;--cell-radius:3px;--tile-radius:3px;--tile-shadow:0 1px 3px rgba(20,32,60,.35);--tile-ink:#fff;--dialog-bg:#fff;--dialog-bd:#d6dae2;--dialog-veil:rgba(29,35,48,.38);--rule:#e1e4ea;--bg-image:none;--bf:none;--bw:1px;--ui-font:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --tile-0:#c0392b;--tile-1:#2e8b57;--tile-2:#c9a400;--tile-3:#2f5fb3;--tile-4:#d9731a;--tile-5:#7d3c98;--tile-6:#138d9c;--tile-7:#c2185b;--tile-8:#6b8e23;--tile-9:#6d6d6d;
+  --board-bd:transparent;--cell-bd:transparent;--tile-inner:transparent;--h-variant:normal;--h1-spacing:.06em;--h2-spacing:normal;--h2-transform:none;
+  --cell:84px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:var(--ui-font);background-image:var(--bg-image);background-attachment:fixed;background-size:cover;overflow:hidden;overscroll-behavior:none;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.screen{display:none;position:absolute;inset:0;padding:max(env(safe-area-inset-top),8px) 12px max(env(safe-area-inset-bottom),8px);flex-direction:column;align-items:center}
+.screen.on{display:flex}
+button{font:inherit;color:var(--btn-fg);background:var(--btn-bg);border:var(--bw) solid var(--btn-bd);border-radius:var(--btn-radius);padding:10px 16px;box-shadow:var(--btn-shadow);-webkit-backdrop-filter:var(--bf);backdrop-filter:var(--bf);cursor:pointer}
+button:active{background:var(--btn-active)}
+button:disabled{opacity:.4;cursor:default}
+button.primary{background:var(--acc);color:var(--bg);border-color:var(--acc);font-weight:600}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+/* accueil */
+#s-home{overflow-y:auto}
+#logo{flex:none;width:clamp(96px,22vh,180px);height:clamp(96px,22vh,180px);margin:auto 0 8px}
+#logo svg{display:block;width:100%;height:100%}
+h1{font-size:2.6rem;margin:0;color:var(--acc);letter-spacing:var(--h1-spacing);font-variant:var(--h-variant);font-weight:700;line-height:1.1}
+.sub{margin:.3em 0 1.6em;color:var(--muted)}
+.menu{display:flex;flex-direction:column;gap:12px;width:min(78vw,300px)}
+.menu button{font-size:1.15rem;padding:12px}
+.foot{flex:none;margin:auto 0 0;padding:18px 12px 10px;font-size:.74rem;line-height:1.5;color:var(--muted);text-align:center}
+/* partie */
+.ic{display:block;width:1.4em;height:1.4em;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.bar{display:flex;align-items:center;gap:8px;width:100%;max-width:760px;padding:6px 0;flex:none}
+.bar button{padding:6px 12px;min-height:46px;min-width:46px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.bar .grow{flex:1}
+#s-game{overflow:hidden}
+#g-time{font-variant-numeric:tabular-nums;font-size:1.15rem;color:var(--acc);font-weight:600;min-width:3.4em}
+#g-count{font-variant-numeric:tabular-nums;font-size:1.15rem;color:var(--muted);font-weight:600;padding:0 4px}
+#g-count.win{color:var(--acc)}
+.boards{flex:1;min-height:0;width:100%;display:flex;gap:calc(var(--cell)*.5);align-items:center;justify-content:center;direction:ltr}
+.boards.stacked{flex-direction:column;gap:calc(var(--cell)*.3)}
+.board{display:grid;gap:var(--board-gap);padding:var(--board-gap);background:var(--board-bg);border:1px solid var(--board-bd);border-radius:var(--board-radius);touch-action:none;-webkit-backdrop-filter:var(--bf);backdrop-filter:var(--bf)}
+.slot{width:var(--cell);height:var(--cell);background:var(--cell-bg);border:1px solid var(--cell-bd);border-radius:var(--cell-radius);position:relative;outline-offset:-3px}
+.slot.refuse{animation:shake .25s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.tile{position:absolute;inset:2px;border-radius:var(--tile-radius);touch-action:none;cursor:grab;box-shadow:var(--tile-shadow);color:var(--tile-ink);font-weight:700;font-size:calc(var(--cell)*.26);text-shadow:0 0 3px #000,0 0 2px #000}
+.tile::after{content:"";position:absolute;inset:3px;border:1px solid var(--tile-inner);border-radius:var(--tile-radius);pointer-events:none}
+.tile.selected{box-shadow:0 0 0 3px var(--acc),0 2px 6px rgba(0,0,0,.5)}
+.tile.dragging{z-index:10;cursor:grabbing;pointer-events:none;box-shadow:0 8px 18px rgba(0,0,0,.55)}
+.tile span{position:absolute;line-height:1}
+.tile .n{top:6%;left:50%;transform:translateX(-50%)}
+.tile .s{bottom:6%;left:50%;transform:translateX(-50%)}
+.tile .w{left:9%;top:50%;transform:translateY(-50%)}
+.tile .e{right:9%;top:50%;transform:translateY(-50%)}
+dialog .col{display:flex;flex-direction:column;gap:10px;min-width:min(64vw,240px)}
+dialog .col button{font-size:1.05rem;padding:12px}
+/* textes (aide, options, à propos) */
+.text{align-items:stretch;overflow-y:auto;max-width:560px;margin:0 auto;padding-bottom:24px}
+.text h2{color:var(--acc);font-weight:700;letter-spacing:var(--h2-spacing);font-variant:var(--h-variant);text-transform:var(--h2-transform)}
+.text h3{margin:1.2em 0 .3em;font-size:1rem}
+.text p,.text li{line-height:1.45}
+.text ul{padding-left:1.2em;margin:.3em 0}
+.text button.back{margin-top:16px}
+.optrow{margin:14px 0 18px}
+.optrow h3{margin:0 0 8px}
+select{width:100%;font:inherit;font-size:1rem;color:var(--btn-fg);background:var(--btn-bg);border:var(--bw) solid var(--btn-bd);border-radius:var(--btn-radius);padding:12px 10px}
+.seg{display:flex;border:var(--bw) solid var(--btn-bd);border-radius:var(--btn-radius);overflow:hidden;background:var(--btn-bg)}
+.seg button{flex:1;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;padding:12px 6px;font-size:1rem}
+.seg button+button{border-left:var(--bw) solid var(--btn-bd)}
+.seg button.on{background:var(--acc);color:var(--bg);font-weight:600}
+#o-family{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--btn-bd)}
+#o-family button{border:0;border-radius:0}
+.note{font-size:.85rem;color:var(--muted)}
+/* fenêtre de fin de partie */
+dialog{background:var(--dialog-bg);color:var(--fg);border:var(--bw) solid var(--dialog-bd);border-radius:16px;padding:20px;max-width:min(88vw,380px);text-align:center;-webkit-backdrop-filter:var(--bf);backdrop-filter:var(--bf)}
+dialog::backdrop{background:var(--dialog-veil)}
+dialog p{margin:0 0 16px;font-size:1.1rem;line-height:1.4}
+dialog .row{display:flex;gap:10px;justify-content:center}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.board .row{display:contents}
+/* modes hexagonal et carré tronqué : cases positionnées par app.js (src/geoview.js), découpées par leur contour */
+.board.geo{position:relative;display:block;padding:0}
+.slot.geo{position:absolute;border:0;border-radius:0;transform:scale(.94)}
+.slot.geo:focus-visible{background:var(--acc);outline:none}
+.slot.geo.refuse{animation:shakeGeo .25s}
+@keyframes shakeGeo{25%{transform:scale(.94) translateX(-4px)}75%{transform:scale(.94) translateX(4px)}}
+.k-hex{clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
+.k-oct{clip-path:polygon(29.289% 0,70.711% 0,100% 29.289%,100% 70.711%,70.711% 100%,29.289% 100%,0 70.711%,0 29.289%)}
+.k-sq{clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.tile.geo{inset:6%;border-radius:0;box-shadow:none;font-size:calc(var(--cell)*.22)}
+.tile.geo::after{display:none}
+.tile.k-hex{font-size:calc(var(--cell)*.24)}
+.tile.k-sq{inset:4%;font-size:calc(var(--cell)*.17)}
+.tile.geo span.g{position:absolute;line-height:1;transform:translate(-50%,-50%)}
+.tile.geo.selected{box-shadow:none;filter:brightness(1.4) saturate(1.2)}
+.tile.floating{position:fixed;pointer-events:none}
+#g-mode{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);border:1px solid var(--acc);border-radius:999px;padding:2px 8px;margin-left:8px}
+.tile.rotmode{box-shadow:0 0 0 3px var(--acc),0 2px 6px rgba(0,0,0,.5)}
+.tile.geo.rotmode{box-shadow:none;filter:brightness(1.3) saturate(1.2)}
+.tile.turning{z-index:10;cursor:grabbing}
+.tile .rotglyph{left:50%;top:50%;transform:translate(-50%,-50%);font-size:calc(var(--cell)*.42);opacity:.55;pointer-events:none;text-shadow:0 0 3px #000;animation:rotpulse 1.4s ease-in-out infinite}
+@keyframes rotpulse{50%{opacity:.95}}
+button.danger{background:transparent;color:#b4233a;border-color:#b4233a}
+button.danger:active{background:rgba(180,35,58,.12)}
+.text ol{padding-left:1.6em;margin:.2em 0 .6em}
+.text li{font-variant-numeric:tabular-nums}
+.gcode{flex:none;align-self:center;margin:0;padding:2px 10px;min-height:0;border:0;background:transparent;box-shadow:none;color:var(--muted);font:inherit;font-size:.78rem;letter-spacing:.06em;font-variant-numeric:tabular-nums;cursor:pointer;-webkit-backdrop-filter:none;backdrop-filter:none}
+.gcode[hidden]{display:none}
+.gcode.copied{color:var(--acc)}
+.text h4{margin:1em 0 .25em;font-size:.95rem}
+.stats table{width:100%;border-collapse:collapse;margin:.2em 0 .6em;font-variant-numeric:tabular-nums;font-size:.92rem}
+.stats th{font-weight:600;color:var(--muted);text-align:right;padding:2px 4px;font-size:.8rem}
+.stats td{padding:3px 4px;text-align:right;border-top:1px solid var(--rule)}
+.stats th:first-child,.stats td:first-child{text-align:left}
+.stats tr.total td{font-weight:600}
+.stats table.recent td:nth-child(2){text-align:left}
+.stats small{display:block;font-size:.72rem;letter-spacing:.04em;color:var(--muted)}
+#code-field{width:100%;box-sizing:border-box;font:inherit;font-size:1.3rem;letter-spacing:.12em;text-align:center;text-transform:uppercase;color:var(--btn-fg);background:var(--btn-bg);border:var(--bw) solid var(--btn-bd);border-radius:var(--btn-radius);padding:10px}
+#code-err{color:#b4233a;font-size:.9rem;margin:.5em 0 0}
+@media (prefers-reduced-motion:reduce){.tile .rotglyph{animation:none}.slot.refuse{animation:none;outline:3px solid #b4233a;outline-offset:-3px}.tile{transition:none}}
+</style>
+</head>
+<body>
+
+<section id="s-home" class="screen">
+  <div id="logo"></div>
+  <h1>T-7r4V3x</h1>
+  <p class="sub" data-i18n="home.sub"></p>
+  <nav class="menu">
+    <div class="seg" id="h-mode" role="group"></div>
+    <button id="b-continue" data-i18n="home.continue"></button>
+    <button id="b-new" class="primary" data-i18n="home.new"></button>
+    <button id="b-stats" data-i18n="home.stats"></button>
+    <button id="b-install" data-i18n="home.install" hidden></button>
+    <button id="b-help" data-i18n="home.help"></button>
+    <button id="b-options" data-i18n="home.options"></button>
+    <button id="b-about" data-i18n="home.about"></button>
+  </nav>
+  <p class="foot"><span id="foot"></span><br><span data-i18n-html="foot.inspired"></span></p>
+</section>
+
+<section id="s-game" class="screen">
+  <header class="bar">
+    <button id="g-menu" data-icon="menu" data-i18n-aria="game.menu" data-i18n-title="game.menu"></button>
+    <span id="g-time" data-i18n-aria="game.time">0:00</span>
+    <span id="g-mode" data-i18n="mode.insane" hidden></span>
+    <span class="grow"></span>
+    <span id="g-count" role="status"></span>
+    <button id="g-undo" data-icon="undo" data-i18n-aria="game.undo" data-i18n-title="game.undo" disabled></button>
+    <button id="g-redo" data-icon="redo" data-i18n-aria="game.redo" data-i18n-title="game.redo" disabled></button>
+  </header>
+  <button id="g-code" class="gcode" hidden></button>
+  <main id="boards" class="boards">
+    <div id="target" class="board" role="grid" data-i18n-aria="game.zone"></div>
+    <div id="tray" class="board" role="grid" data-i18n-aria="game.tray"></div>
+  </main>
+</section>
+
+<section id="s-stats" class="screen text stats">
+  <h2 data-i18n="stats.title"></h2>
+  <div id="stats-body"></div>
+  <button id="stats-reset" class="danger" data-i18n="stats.reset" hidden></button>
+  <button class="back" data-i18n="common.back"></button>
+</section>
+
+<section id="s-help" class="screen text">
+  <h2 data-i18n="help.title"></h2>
+  <h3 data-i18n="help.goal.h"></h3>
+  <p data-i18n="help.goal.p"></p>
+  <h3 data-i18n="help.play.h"></h3>
+  <ul><li data-i18n="help.play.1"></li><li data-i18n="help.play.2"></li><li data-i18n="help.play.3"></li><li data-i18n="help.play.4"></li></ul>
+  <h3 data-i18n="help.shape.h"></h3>
+  <ul><li data-i18n="help.shape.hex"></li><li data-i18n="help.shape.oct"></li></ul>
+  <h3 data-i18n="help.insane.h"></h3>
+  <ul><li data-i18n="help.insane.1"></li><li data-i18n="help.insane.2"></li><li data-i18n="help.insane.3"></li></ul>
+  <h3 data-i18n="help.code.h"></h3>
+  <ul><li data-i18n="help.code.1"></li><li data-i18n="help.code.2"></li><li data-i18n="help.code.3"></li></ul>
+  <h3 data-i18n="help.tip.h"></h3>
+  <ul><li data-i18n="help.tip.1"></li><li data-i18n="help.tip.2"></li></ul>
+  <h3 data-i18n="help.install.h"></h3>
+  <ul><li data-i18n="help.install.1"></li><li data-i18n="help.install.2"></li><li data-i18n="help.install.3"></li></ul>
+  <button class="back" data-i18n="common.back"></button>
+</section>
+
+<section id="s-options" class="screen text">
+  <h2 data-i18n="opt.title"></h2>
+  <div class="optrow"><h3 data-i18n="opt.shape"></h3><div class="seg" id="o-shape" data-opt="shape"></div></div>
+  <div class="optrow"><h3 data-i18n="opt.size"></h3><div class="seg" id="o-size" data-opt="size"></div></div>
+  <div class="optrow"><h3 data-i18n="opt.colors"></h3><div class="seg" id="o-colors" data-opt="colors"></div></div>
+  <div class="optrow"><h3 data-i18n="opt.family"></h3><div class="seg" id="o-family" data-opt="family"></div></div>
+  <div class="optrow"><h3 data-i18n="opt.mode"></h3><div class="seg" id="o-mode" data-opt="mode"></div></div>
+  <div class="optrow"><h3 data-i18n="opt.lang"></h3><select id="o-lang" data-i18n-aria="opt.lang"></select></div>
+  <p class="note" data-i18n="opt.note"></p>
+  <button class="back" data-i18n="common.back"></button>
+</section>
+
+<section id="s-about" class="screen text">
+  <h2 data-i18n="about.title"></h2>
+  <p data-i18n="about.what"></p>
+  <p data-i18n-html="about.origin"></p>
+  <p data-i18n="about.port"></p>
+  <p data-i18n-html="about.licence"></p>
+  <p data-i18n-html="about.source"></p>
+  <p class="note" id="about-version"></p>
+  <button class="back" data-i18n="common.back"></button>
+</section>
+
+<dialog id="menu" aria-labelledby="menu-title">
+  <p id="menu-title" data-i18n="menu.title"></p>
+  <div class="col">
+    <button id="m-resume" class="primary" data-i18n="menu.resume"></button>
+    <button id="m-new" data-i18n="menu.new"></button>
+    <button id="m-help" data-i18n="menu.help"></button>
+    <button id="m-options" data-i18n="menu.options"></button>
+    <button id="m-home" data-i18n="menu.home"></button>
+  </div>
+</dialog>
+
+<dialog id="confirm" aria-labelledby="confirm-text">
+  <p id="confirm-text" data-i18n="stats.confirm"></p>
+  <div class="row">
+    <button id="confirm-no" class="primary" data-i18n="common.cancel"></button>
+    <button id="confirm-yes" class="danger" data-i18n="stats.yes"></button>
+  </div>
+</dialog>
+
+<dialog id="newgame" aria-labelledby="newgame-title">
+  <p id="newgame-title" data-i18n="home.new"></p>
+  <div class="col">
+    <button id="ng-random" class="primary"></button>
+    <button id="ng-daily"></button>
+    <button id="ng-code" data-i18n="new.code"></button>
+    <button id="ng-cancel" data-i18n="common.cancel"></button>
+  </div>
+</dialog>
+
+<dialog id="codedlg" aria-labelledby="code-title">
+  <p id="code-title" data-i18n="code.prompt"></p>
+  <input id="code-field" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="14" placeholder="012G-7K3F-9A2H" aria-describedby="code-err" data-i18n-aria="code.prompt">
+  <p id="code-err" role="alert" hidden data-i18n="code.invalid"></p>
+  <div class="row">
+    <button id="code-cancel" data-i18n="common.cancel"></button>
+    <button id="code-play" class="primary" data-i18n="code.play"></button>
+  </div>
+</dialog>
+
+<dialog id="abandon" aria-labelledby="abandon-text">
+  <p id="abandon-text" data-i18n="dlg.abandon"></p>
+  <div class="row">
+    <button id="abandon-no" class="primary" data-i18n="common.cancel"></button>
+    <button id="abandon-yes" class="danger" data-i18n="dlg.yesNew"></button>
+  </div>
+</dialog>
+
+<div id="live" class="sr" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<dialog id="win" aria-labelledby="win-text">
+  <p id="win-text"></p>
+  <div class="row">
+    <button id="win-again" class="primary" data-i18n="game.again"></button>
+    <button id="win-menu" data-i18n="menu.home"></button>
+  </div>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
