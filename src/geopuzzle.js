@@ -23,8 +23,10 @@
  */
 import { savedCode } from './puzzle.js';
 
-export const GEO_SHAPES = ['hex', 'oct'];
+export const GEO_SHAPES = ['hex', 'oct', 'dam'];
 export const GEO_SIZES = [3, 4, 5];
+/** Tailles proposées par forme (hexagonal et carré tronqué : 3, 4, 5 ; 8/4gone : 3 ou 5 cases de côté). */
+export const SIZES_OF = { hex: GEO_SIZES, oct: GEO_SIZES, dam: [3, 5] };
 
 /**
  * Dimensions du pavage hexagonal pour une taille donnée : colonnes × lignes. Les colonnes décalées rendent la région
@@ -78,7 +80,31 @@ const OCT = {
   },
 };
 
-export const TOPOLOGIES = { hex: HEX, oct: OCT };
+/*
+ * « 8/4gone » : damier de n × n cases (n = 3 ou 5) où les cases (x, y) de même parité reçoivent un octogone et les autres un carré droit.
+ * Les octogones se touchent par leurs côtés en biais (NE, SE, SW, NW), et entre deux octogones voisins en ligne se place un carré.
+ * Chaque octogone intérieur est donc entouré de 4 carrés (N, E, S, W). Côtés d'un octogone : N, NE, E, SE, S, SW, W, NW ;
+ * d'un carré : N, E, S, W. -> [dx, dy, côté voisin]
+ */
+const DAM_FROM_OCT = [[0, -1, 2], [1, -1, 5], [1, 0, 3], [1, 1, 7], [0, 1, 0], [-1, 1, 1], [-1, 0, 1], [-1, -1, 3]];
+const DAM_FROM_SQ = [[0, -1, 4], [1, 0, 6], [0, 1, 0], [-1, 0, 2]];
+
+const DAM = {
+  id: 'dam',
+  width: (n) => n,
+  height: (n) => n,
+  isCell: (n, x, y) => x >= 0 && x < n && y >= 0 && y < n,
+  kind: (n, x, y) => (((x + y) & 1) === 0 ? 'oct' : 'sq4'),
+  edgeCount: (kind) => (kind === 'oct' ? 8 : 4),
+  neighbor(n, x, y, e) {
+    const t = (((x + y) & 1) === 0 ? DAM_FROM_OCT : DAM_FROM_SQ)[e];
+    const nx = x + t[0];
+    const ny = y + t[1];
+    return DAM.isCell(n, nx, ny) ? { x: nx, y: ny, e: t[2] } : null;
+  },
+};
+
+export const TOPOLOGIES = { hex: HEX, oct: OCT, dam: DAM };
 
 export class GeoTile {
   /** @param {number} x colonne de la solution @param {number} y ligne de la solution */

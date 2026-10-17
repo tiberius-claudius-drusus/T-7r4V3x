@@ -22,7 +22,7 @@ const signature = (puzzle) => {
 
 const allConfigs = () => SHAPES.flatMap((shape) => sizesOf(shape).flatMap((size) => COLORS.flatMap((colors) => [false, true].map((insane) => ({ shape, size, colors, insane })))));
 
-test('configuration <-> entier : aller-retour pour les 110 configurations, aucune autre n\'existe', () => {
+test('configuration <-> entier : aller-retour pour les 130 configurations, aucune autre n\'existe', () => {
   const seen = new Set();
   for (const c of allConfigs()) {
     const i = configIndex(c);
@@ -31,7 +31,7 @@ test('configuration <-> entier : aller-retour pour les 110 configurations, aucun
     seen.add(i);
     assert.deepEqual(configFromIndex(i), c);
   }
-  assert.equal(seen.size, (5 + 3 + 3) * 5 * 2); // 110
+  assert.equal(seen.size, (5 + 3 + 3 + 2) * 5 * 2); // 130 : carré 5 tailles, hexagonal 3, carré tronqué 3, 8/4gone 2
   let valid = 0;
   for (let i = 0; i < 1024; i++) if (configFromIndex(i)) valid += 1;
   assert.equal(valid, seen.size);
@@ -156,6 +156,8 @@ const REFERENCE = [
   ['0157-HJKM-NPQF', 'c3b0986e', 'hexagonal 7×5, 8 valeurs, Insane'],
   ['0182-RSTV-WXYR', 'c81c2900', 'carré tronqué 3×3, 5 valeurs'],
   ['0199-ZZZZ-ZZZ3', '6d3198c6', 'carré tronqué 5×5, 10 valeurs, Insane'],
+  ['01C2-7K3F-9A2C', '91d9d13', '8/4gone 3×3, 5 valeurs'],
+  ['01CS-ZZZZ-ZZZE', 'e16990d8', '8/4gone 5×5, 10 valeurs, Insane'],
 ];
 for (const [code, expected, label] of REFERENCE) {
   test(`puzzle de référence (version 1) : ${label}`, () => {

@@ -3,7 +3,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { TOPOLOGIES, GEO_SHAPES, GEO_SIZES } from '../src/geopuzzle.js';
+import { TOPOLOGIES, GEO_SHAPES, SIZES_OF } from '../src/geopuzzle.js';
 import { EDGE_COUNT, POLYGONS, NUMBER_SLOTS, cellBox, cellCenter, regionUnits, gradientFor, polygonCss } from '../src/geoview.js';
 
 const near = (a, b, eps = 1e-9) => Math.abs(a - b) < eps;
@@ -26,7 +26,7 @@ test('le dégradé d\'une tuile a un secteur par côté', () => {
 });
 
 for (const shape of GEO_SHAPES) {
-  for (const n of GEO_SIZES) {
+  for (const n of SIZES_OF[shape]) {
     test(`${shape} ${n} : les cases voisines (topologie) sont géométriquement voisines (affichage)`, () => {
       const topo = TOPOLOGIES[shape];
       const W = topo.width(n);

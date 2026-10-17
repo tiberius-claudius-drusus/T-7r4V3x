@@ -17,6 +17,12 @@ test('le calcul : n! en mode normal, avec les orientations en Insane, par sorte 
   assert.equal(placementCount({ shape: 'oct', size: 3, insane: true }), 362880 * 8 ** 9 * 24 * 4 ** 4);
 });
 
+test('8/4gone : octogones × carrés', () => {
+  assert.equal(placementCount({ shape: 'dam', size: 3 }), 120 * 24); // 5! × 4!
+  assert.equal(placementCount({ shape: 'dam', size: 3, insane: true }), 120 * 8 ** 5 * 24 * 4 ** 4);
+  assert.equal(placementCount({ shape: 'dam', size: 5 }), 6227020800 * 479001600); // 13! × 12!
+});
+
 test('l\'écriture à trois chiffres', () => {
   assert.equal(engineering(362880), '3.63×10⁵');
   assert.equal(engineering(24), '2.40×10¹');

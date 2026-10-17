@@ -3,5 +3,5 @@
  * publication fausse a déjà été corrigée à la main). Le test test/version.test.js vérifie la cohérence
  * avec CHANGELOG.md. Licence : GPL-2.0-or-later (voir LICENSE.txt).
  */
-export const VERSION = '1.1.0';
+export const VERSION = '1.2.0';
 export const RELEASE_DATE = '2026-10-17';

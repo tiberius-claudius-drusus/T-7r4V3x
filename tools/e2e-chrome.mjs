@@ -297,6 +297,32 @@ await section('Accueil, mode Insane, gestes de rotation, trois formes, sauvegard
   check('oct Insane : un cran de 45° change la tuile', tile.label !== octBefore, `${octBefore} -> ${tile.label}`);
   await shot('4-oct-insane');
 
+  // --- 8/4gone (damier octogones + carrés), 5×5 puis 3×3
+  await ev(`location.hash = 'options'`);
+  await sleep(300);
+  await ev(`[...document.querySelectorAll('#o-shape button')][3].click()`);
+  await sleep(150);
+  await ev(`[...document.querySelectorAll('#o-size button')][1].click()`); // 5×5
+  await sleep(200);
+  const damSizes = await ev(`[...document.querySelectorAll('#o-size button')].map((b) => b.textContent)`);
+  check('8/4gone : deux tailles seulement, 3×3 et 5×5', JSON.stringify(damSizes) === JSON.stringify(['3×3', '5×5']), JSON.stringify(damSizes));
+  await shot('4a-options-dam');
+  await ev(`location.hash = ''`);
+  await sleep(300);
+  await ev(`[...document.querySelectorAll('#h-mode button')][1].click(); (() => { document.getElementById('b-new').click(); document.getElementById('ng-random').click(); if (document.getElementById('abandon').open) document.getElementById('abandon-yes').click(); })()`);
+  await sleep(700);
+  const damCount = await ev(`({ oct: document.querySelectorAll('#tray .tile.k-oct').length, sq: document.querySelectorAll('#tray .tile.k-sq4').length, code: document.getElementById('g-code').textContent, place: document.getElementById('g-place').textContent })`);
+  check('8/4gone 5×5 : 13 octogones et 12 carrés dans la réserve', damCount.oct === 13 && damCount.sq === 12, JSON.stringify(damCount));
+  check('8/4gone 5×5 Insane : nombre de placements affiché', /×10/.test(damCount.place), damCount.place);
+  tile = await trayTile(0);
+  await dblclick(tile.x, tile.y);
+  tile = await trayTile(0);
+  const damBefore = tile.label;
+  await circle(tile.x, tile.y, tile.w * 0.3, 0, tile.cls.includes('k-oct') ? 45 : 90);
+  tile = await trayTile(0);
+  check('8/4gone Insane : un cran change la tuile', tile.label !== damBefore, `${damBefore} -> ${tile.label}`);
+  await shot('4b-dam-insane');
+
   // --- statistiques : reprise des anciens temps (migration), puis tableau par forme
   await reloadWith({ 'tx.scores': { '3x3/6': [{ ms: 9000, date: '2026-10-16' }], 'insane:hex:4x3/6': [{ ms: 12000, date: '2026-10-16' }], 'hex:3x3/6': [{ ms: 1000, date: '2026-10-10' }] } }, { shape: 'carre', size: 3, colors: 6, insane: false, family: 'epure', mode: 'clair', lang: 'fr' });
   await ev(`location.hash = 'stats'`);

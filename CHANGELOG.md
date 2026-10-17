@@ -3,6 +3,10 @@
 Format : une entrée par version, la plus récente en premier. La première entrée doit correspondre à
 `src/version.js` et `package.json` (test `test/version.test.js`).
 
+## [1.2.0] - 2026-10-17
+
+Nouveau mode de plateau : **8/4gone**, un damier de 3×3 ou 5×5 cases (normal et Insane). Les cases de même parité reçoivent un octogone, les autres un carré droit ; les octogones se touchent par leurs côtés en biais et chaque octogone est entouré de 4 carrés (3×3 : 5 octogones et 4 carrés ; 5×5 : 13 octogones et 12 carrés). Même règle que le carré tronqué : chaque sorte de tuile ne va que sur sa sorte de case. Le code de puzzle gagne une valeur de forme (la dernière : les codes déjà partagés ne changent pas) ; les nombres de placements possibles sont recalculés (tableau généré, 26 entrées) ; nom et aide de la forme dans les 20 langues (traductions de ma main, sans relecture native). Deux puzzles de référence figent l'algorithme, le banc Chrome joue une partie 8/4gone.
+
 ## [1.1.0] - 2026-10-17
 
 Nouveauté. À côté du code du puzzle s'affiche le **nombre de placements possibles** des tuiles sur le plateau, en notation à trois chiffres (ex. « 3.63×10⁵ » pour un plateau carré 3×3). Sans rotation en mode normal ; avec les rotations en mode Insane (4 orientations par carré, 6 par hexagone, 8 par octogone). Les octogones et les petits carrés du plateau tronqué ne se mélangent pas, donc leurs dispositions se multiplient. Les tuiles sont comptées comme distinctes. Nouvelle chaîne `code.placements` dans les 20 langues ; `placementCount` et `engineering` dans `src/code.js` (testés).

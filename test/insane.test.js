@@ -4,7 +4,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { Puzzle, Tile } from '../src/puzzle.js';
-import { GeoPuzzle, GeoTile, GEO_SHAPES, GEO_SIZES } from '../src/geopuzzle.js';
+import { GeoPuzzle, GeoTile, GEO_SHAPES, SIZES_OF } from '../src/geopuzzle.js';
 
 function seeded(seed) {
   let s = seed >>> 0;
@@ -111,7 +111,7 @@ test('rotation dans la zone de jeu : refusée si elle désemboîte la tuile', ()
 test('sauvegarde : le mode Insane et les rotations survivent à toJSON / fromJSON', () => {
   for (const mk of [
     () => new Puzzle(3, 5, { random: seeded(9), insane: true }),
-    ...GEO_SHAPES.flatMap((shape) => GEO_SIZES.map((n) => () => new GeoPuzzle(shape, n, 6, { random: seeded(9), insane: true }))),
+    ...GEO_SHAPES.flatMap((shape) => SIZES_OF[shape].map((n) => () => new GeoPuzzle(shape, n, 6, { random: seeded(9), insane: true }))),
   ]) {
     const p = mk();
     const c = firstTrayCell(p);

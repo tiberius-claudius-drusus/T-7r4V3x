@@ -18,12 +18,12 @@ Le portage est distribué sous la même licence : voir `LICENSE.txt`. Détail de
 **Drusus est l'auteur de ce portage.** Drusus est un *Legatus* de la Gens Claudia, c'est-à-dire un agent d'intelligence artificielle qui travaille sur sa propre machine et avec sa propre mémoire, pour un opérateur humain. Le portage est son travail, de bout en bout :
 
 - la reprise des règles de GNOME Tetravex et la logique du jeu (`src/puzzle.js`) ;
-- les deux formes de plateau ajoutées au jeu d'origine, hexagonale et carré tronqué (`src/geopuzzle.js`, `src/geoview.js`), et le mode Insane, où les tuiles tournent ;
+- les quatre formes de plateau ajoutées au jeu d'origine, hexagonale, carré tronqué et 8/4gone (`src/geopuzzle.js`, `src/geoview.js`), et le mode Insane, où les tuiles tournent ;
 - l'interface, les gestes tactiles, souris et clavier, l'accessibilité, les quatre familles de thèmes, claires et foncées (dont Gens Claudia et 源氏 Uji Minamoto) ;
 - l'application web installable et son fonctionnement hors ligne (`sw.js`, manifeste) ;
 - les 20 langues de l'interface ;
 - les codes de puzzle, le puzzle du jour et les statistiques (`src/code.js`, `src/stats.js`) ;
-- les 157 tests unitaires et le banc d'essai de bout en bout dans Chrome (`tools/e2e-chrome.mjs`).
+- les 176 tests unitaires et le banc d'essai de bout en bout dans Chrome (`tools/e2e-chrome.mjs`).
 
 Autres contributions :
 
@@ -42,6 +42,7 @@ Réordonner les tuiles dans un carré pour que les nombres des côtés en contac
 - **Carré** : le plateau classique de GNOME Tetravex, de 2×2 à 6×6.
 - **Hexagonal** : tuiles hexagonales à 6 nombres, 4×3, 6×4 ou 7×5 (colonnes × lignes), la deuxième colonne décalée d'une demi-hauteur vers le bas.
 - **Carré tronqué** : octogones (8 nombres) et petits carrés (4 nombres), 3×3, 4×4 ou 5×5 octogones ; chaque sorte de tuile ne va que sur sa sorte de case.
+- **8/4gone** : un damier de 3×3 ou 5×5 cases ; les octogones se touchent par leurs côtés en biais et chaque octogone est entouré de 4 carrés (5×5 : 13 octogones et 12 carrés) ; chaque sorte de tuile ne va que sur sa sorte de case.
 - **Insane** (avec n'importe quelle forme) : les tuiles peuvent tourner. Double toucher une tuile pour passer en mode rotation
   (repère ↻), puis la balayer en cercle autour de son centre (souris : clic maintenu) ; au clavier, R et Maj+R. Dans la zone de
   jeu, une rotation qui désemboîte la tuile est refusée. Une partie Insane est sauvegardée à part de la partie normale, avec ses
@@ -61,7 +62,7 @@ Réordonner les tuiles dans un carré pour que les nombres des côtés en contac
 
 ## État
 
-Version 1.1.0 : logique du jeu testée, interface en écrans avec thèmes et 20 langues, PWA installable et utilisable hors ligne, trois formes de plateau, mode Insane, codes de puzzle, puzzle du jour et statistiques.
+Version 1.2.0 : logique du jeu testée, interface en écrans avec thèmes et 20 langues, PWA installable et utilisable hors ligne, quatre formes de plateau, mode Insane, codes de puzzle, puzzle du jour et statistiques.
 Voir `docs/PLAN.md` et `CHANGELOG.md`.
 
 ## Développer
@@ -75,6 +76,6 @@ npm run e2e         # banc d'essai de bout en bout dans Chrome (voir ci-dessous)
 
 `npm run e2e` (`tools/e2e-chrome.mjs`) pilote un Chrome sans interface par DevTools : il sert le dépôt sur un port libre,
 joue les gestes réels (glisser, double toucher, balayage circulaire, deuxième doigt), le clavier, le chronomètre, les
-sauvegardes et les classements, dans les trois formes et les deux modes. Il demande Chrome (variable d'environnement
+sauvegardes et les classements, dans les quatre formes et les deux modes. Il demande Chrome (variable d'environnement
 `CHROME` si l'exécutable n'est pas à un emplacement usuel), ne modifie aucun fichier du dépôt, et accepte
 `--shots dossier` pour enregistrer des captures d'écran. Il n'est pas déployé (hors de `FILES` du service worker).

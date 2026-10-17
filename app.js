@@ -11,7 +11,7 @@
  * src/puzzle.js ; les couleurs viennent de src/themes.js ; les textes de src/strings.js.
  */
 import { Puzzle } from './src/puzzle.js';
-import { GeoPuzzle, GEO_SHAPES, GEO_SIZES, hexDims } from './src/geopuzzle.js';
+import { GeoPuzzle, GEO_SHAPES, hexDims } from './src/geopuzzle.js';
 import { NUMBER_SLOTS, cellBox, gradientFor, regionUnits } from './src/geoview.js';
 import { THEMES, apply as applyTheme, normalize as normalizeTheme } from './src/themes.js';
 import { t, tHtml, setDictionary } from './src/strings.js';
@@ -20,7 +20,7 @@ import { logoSvg } from './src/logo.js';
 import { VERSION, RELEASE_DATE } from './src/version.js';
 import { ICONS } from './src/icons.js';
 import { PLACEMENTS } from './src/placements.js';
-import { SHAPES, SIZES, COLORS, makeCode, parseCode, canonicalCode, typeCode, dailyCode, localDate, puzzleFromCode } from './src/code.js';
+import { SHAPES, SIZES, COLORS, sizesOf, makeCode, parseCode, canonicalCode, typeCode, dailyCode, localDate, puzzleFromCode } from './src/code.js';
 import { emptyStats, cleanStats, addStarted, addGame, summarize, byShape, recent, bestFor, sizeLabel, gamesFromScores } from './src/stats.js';
 
 const DRAG_THRESHOLD = 6;
@@ -61,8 +61,8 @@ function cleanOptions(o) {
   };
 }
 let options = cleanOptions(load(KEY_OPTS));
-/** Taille réellement jouée : les formes hexagonale et carré tronqué n'existent qu'en 3, 4 et 5. */
-const effectiveSize = (o) => (o.shape === 'carre' ? o.size : Math.min(5, Math.max(3, o.size)));
+/** Taille réellement jouée : la plus proche de celles que propose la forme (hexagonal et carré tronqué : 3, 4, 5 ; 8/4gone : 3 ou 5). */
+const effectiveSize = (o) => (o.shape === 'carre' ? o.size : sizesOf(o.shape).reduce((best, n) => (Math.abs(n - o.size) < Math.abs(best - o.size) ? n : best)));
 /** Statistiques ; la première fois, on reprend les anciens meilleurs temps (rien n'est perdu). */
 function loadStats() {
   const raw = load(KEY_STATS);
@@ -731,7 +731,7 @@ function renderLangSelect() {
 function renderOptions() {
   renderLangSelect();
   segment($('o-shape'), SHAPES, options.shape, (s) => t(`shape.${s}`), (v) => setOption('shape', v));
-  const sizes = options.shape === 'carre' ? SIZES : GEO_SIZES;
+  const sizes = sizesOf(options.shape);
   segment($('o-size'), sizes, effectiveSize(options), (v) => {
     const { cols, rows } = options.shape === 'hex' ? hexDims(v) : { cols: v, rows: v };
     return `${cols}×${rows}`;

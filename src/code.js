@@ -23,13 +23,13 @@
  * donneraient d'autres puzzles. Les tests de `test/code.test.js` figent des puzzles de référence pour le détecter.
  */
 import { Puzzle } from './puzzle.js';
-import { GeoPuzzle, GEO_SIZES } from './geopuzzle.js';
+import { GeoPuzzle, SIZES_OF } from './geopuzzle.js';
 
 export const CODE_VERSION = 1;
-export const SHAPES = ['carre', 'hex', 'oct']; // plateau carré classique, hexagonal, carré tronqué
+export const SHAPES = ['carre', 'hex', 'oct', 'dam']; // plateau carré classique, hexagonal, carré tronqué, 8/4gone (damier octogones et carrés) ; une forme s'ajoute à la FIN : les codes existants ne changent pas
 export const SIZES = [2, 3, 4, 5, 6]; // tailles du plateau carré
 export const COLORS = [3, 5, 6, 8, 10];
-export const sizesOf = (shape) => (shape === 'carre' ? SIZES : GEO_SIZES);
+export const sizesOf = (shape) => (shape === 'carre' ? SIZES : SIZES_OF[shape]);
 
 const ALPHABET = '0123456789ABCDEFGHJKMNPQRSTVWXYZ'; // Crockford : pas de I, L, O, U (pas de confusions à la saisie)
 const SEED_LENGTH = 7;

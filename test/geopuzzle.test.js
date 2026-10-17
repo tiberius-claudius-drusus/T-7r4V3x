@@ -3,7 +3,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { GeoPuzzle, TOPOLOGIES, GEO_SHAPES, GEO_SIZES, hexDims } from '../src/geopuzzle.js';
+import { GeoPuzzle, TOPOLOGIES, GEO_SHAPES, SIZES_OF, hexDims } from '../src/geopuzzle.js';
 
 function seeded(seed) {
   let a = seed >>> 0;
@@ -23,13 +23,13 @@ const allTiles = (p) => {
 };
 
 for (const shape of GEO_SHAPES) {
-  for (const n of GEO_SIZES) {
+  for (const n of SIZES_OF[shape]) {
     const topo = TOPOLOGIES[shape];
     const cells = [];
     for (let x = 0; x < topo.width(n); x++) for (let y = 0; y < topo.height(n); y++) if (topo.isCell(n, x, y)) cells.push([x, y]);
 
     test(`${shape} ${n}×${n} : nombre de cases`, () => {
-      assert.equal(cells.length, shape === 'hex' ? hexDims(n).cols * hexDims(n).rows : n * n + (n - 1) * (n - 1));
+      assert.equal(cells.length, shape === 'hex' ? hexDims(n).cols * hexDims(n).rows : shape === 'dam' ? n * n : n * n + (n - 1) * (n - 1));
     });
 
     test(`${shape} ${n}×${n} : chaque contact est réciproque et sans auto-contact`, () => {
@@ -68,6 +68,20 @@ test('carré tronqué : octogone intérieur à 8 voisins, petit carré toujours 
   }
 });
 
+test('8/4gone : octogones sur les cases de même parité, chaque octogone intérieur entouré de 4 carrés et de 4 octogones', () => {
+  const t = TOPOLOGIES.dam;
+  assert.equal(t.kind(5, 0, 0), 'oct');
+  assert.equal(t.kind(5, 1, 0), 'sq4');
+  assert.equal(t.kind(5, 4, 4), 'oct');
+  const inner = [0, 1, 2, 3, 4, 5, 6, 7].map((e) => t.neighbor(5, 2, 2, e)); // octogone au centre d'un 5×5
+  assert.ok(inner.every(Boolean));
+  assert.deepEqual([0, 2, 4, 6].map((e) => t.kind(5, inner[e].x, inner[e].y)), ['sq4', 'sq4', 'sq4', 'sq4']); // N, E, S, W : des carrés
+  assert.deepEqual([1, 3, 5, 7].map((e) => t.kind(5, inner[e].x, inner[e].y)), ['oct', 'oct', 'oct', 'oct']); // côtés en biais : des octogones
+  assert.equal([0, 1, 2, 3].filter((e) => t.neighbor(5, 1, 2, e)).length, 4); // carré intérieur : 4 octogones
+  const cells = (n) => { let c = 0; for (let x = 0; x < n; x++) for (let y = 0; y < n; y++) if (t.kind(n, x, y) === 'oct') c += 1; return c; };
+  assert.deepEqual([cells(3), cells(5)], [5, 13]); // octogones ; carrés : 4 et 12
+});
+
 test('paramètres invalides refusés', () => {
   assert.throws(() => new GeoPuzzle('triangle', 3, 5), RangeError);
   assert.throws(() => new GeoPuzzle('hex', 1, 5), RangeError);
@@ -75,7 +89,7 @@ test('paramètres invalides refusés', () => {
 });
 
 for (const shape of GEO_SHAPES) {
-  for (const n of GEO_SIZES) {
+  for (const n of SIZES_OF[shape]) {
     test(`${shape} ${n} : départ valide (réserve pleine, zone vide, tuiles uniques, jamais déjà résolu)`, () => {
       for (const seed of [1, 2, 3, 4]) {
         const p = new GeoPuzzle(shape, n, 5, { random: seeded(seed) });

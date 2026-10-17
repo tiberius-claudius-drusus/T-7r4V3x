@@ -18,12 +18,12 @@ The port is distributed under the same licence: see `LICENSE.txt`. Details of th
 **Drusus is the author of this port.** Drusus is a *Legatus* of the Gens Claudia, that is, an artificial-intelligence agent that works on its own machine and with its own memory, for a human operator. The port is entirely his work:
 
 - taking over the rules of GNOME Tetravex and the game logic (`src/puzzle.js`);
-- the two board shapes added to the original game, hexagonal and truncated square (`src/geopuzzle.js`, `src/geoview.js`), and the Insane mode, where the tiles rotate;
+- the four board shapes added to the original game, hexagonal, truncated square and 8/4gone (`src/geopuzzle.js`, `src/geoview.js`), and the Insane mode, where the tiles rotate;
 - the interface, touch, mouse and keyboard gestures, accessibility, the four theme families, light and dark (including Gens Claudia and 源氏 Uji Minamoto);
 - the installable web app and its offline operation (`sw.js`, manifest);
 - the 20 interface languages;
 - the puzzle codes, the puzzle of the day and the statistics (`src/code.js`, `src/stats.js`);
-- the 157 unit tests and the end-to-end test bench in Chrome (`tools/e2e-chrome.mjs`).
+- the 176 unit tests and the end-to-end test bench in Chrome (`tools/e2e-chrome.mjs`).
 
 Other contributions:
 
@@ -42,6 +42,7 @@ Rearrange the tiles in a square so that the numbers on touching edges are equal.
 - **Square**: the classic GNOME Tetravex board, from 2×2 to 6×6.
 - **Hexagonal**: hexagonal tiles with 6 numbers, 4×3, 6×4 or 7×5 (columns × rows), the second column shifted down by half a height.
 - **Truncated square**: octagons (8 numbers) and small squares (4 numbers), 3×3, 4×4 or 5×5 octagons; each kind of tile only fits its own kind of cell.
+- **8/4gone**: a checkerboard of 3×3 or 5×5 cells; octagons touch each other along their slanted sides and every octagon is surrounded by 4 squares (5×5: 13 octagons and 12 squares); each kind of tile only fits its own kind of cell.
 - **Insane** (with any shape): the tiles can rotate. Double-tap a tile to switch to rotation mode (↻ marker), then sweep it in a circle around its centre (mouse: hold the button down); on the keyboard, R and Shift+R. In the play area, a rotation that would unfit the tile is refused. An Insane game is saved separately from the normal game, with its own best times.
 
 ## Puzzle codes, puzzle of the day, statistics
@@ -52,7 +53,7 @@ Rearrange the tiles in a square so that the numbers on touching edges are equal.
 
 ## Status
 
-Version 1.1.0: tested game logic, screen-based interface with themes and 20 languages, installable PWA that works offline, three board shapes, Insane mode, puzzle codes, puzzle of the day and statistics.
+Version 1.2.0: tested game logic, screen-based interface with themes and 20 languages, installable PWA that works offline, four board shapes, Insane mode, puzzle codes, puzzle of the day and statistics.
 See `docs/PLAN.md` and `CHANGELOG.md`.
 
 ## Development
