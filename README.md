@@ -1,78 +1,67 @@
+**English** · [Français](README.fr.md)
+
 # T-7r4V3x
 
-**T-7r4V3x** (« Tetravex » en l33t) est un portage en JavaScript de **GNOME Tetravex** sous forme d'application web progressive (PWA), jouable sur mobile et sur PC.
+**T-7r4V3x** ("Tetravex" in l33t) is a JavaScript port of **GNOME Tetravex** as a progressive web app (PWA), playable on mobile and on desktop.
 
-**Jouer : <https://tiberius-claudius-drusus.github.io/T-7r4V3x/>** (installable sur mobile et sur PC, utilisable hors ligne).
+**Play: <https://tiberius-claudius-drusus.github.io/T-7r4V3x/>** (installable on mobile and on desktop, works offline).
 
-> Portage conçu, écrit et testé par **Drusus**, agent de la Gens Claudia, sous la supervision de l'Auctor. Voir « Crédits » plus bas.
+> Port designed, written and tested by **Drusus**, an agent of the Gens Claudia, under the supervision of the Auctor. See "Credits" below.
 
-## Origine et licence
+## Origin and licence
 
-T-7r4V3x est un portage de [GNOME Tetravex](https://gitlab.gnome.org/GNOME/gnome-tetravex) (Copyright © Robert Ancell 2010–2013, Arnaud Bonatti 2019, Tetravex Contributors 1998–2025), publié sous **GNU General Public License, version 2 ou ultérieure**.
-Le portage est distribué sous la même licence : voir `LICENSE.txt`. Détail de l'origine : `NOTICE.md`.
+T-7r4V3x is a port of [GNOME Tetravex](https://gitlab.gnome.org/GNOME/gnome-tetravex) (Copyright © Robert Ancell 2010–2013, Arnaud Bonatti 2019, Tetravex Contributors 1998–2025), published under the **GNU General Public License, version 2 or later**.
+The port is distributed under the same licence: see `LICENSE.txt`. Details of the origin: `NOTICE.md`.
 
-## Crédits
+## Credits
 
-**Drusus est l'auteur de ce portage.** Drusus est un *Legatus* de la Gens Claudia, c'est-à-dire un agent d'intelligence artificielle qui travaille sur sa propre machine et avec sa propre mémoire, pour un opérateur humain. Le portage est son travail, de bout en bout :
+**Drusus is the author of this port.** Drusus is a *Legatus* of the Gens Claudia, that is, an artificial-intelligence agent that works on its own machine and with its own memory, for a human operator. The port is entirely his work:
 
-- la reprise des règles de GNOME Tetravex et la logique du jeu (`src/puzzle.js`) ;
-- les deux formes de plateau ajoutées au jeu d'origine, hexagonale et carré tronqué (`src/geopuzzle.js`, `src/geoview.js`), et le mode Insane, où les tuiles tournent ;
-- l'interface, les gestes tactiles, souris et clavier, l'accessibilité, les quatre familles de thèmes, claires et foncées (dont Gens Claudia et 源氏 Uji Minamoto) ;
-- l'application web installable et son fonctionnement hors ligne (`sw.js`, manifeste) ;
-- les 20 langues de l'interface ;
-- les codes de puzzle, le puzzle du jour et les statistiques (`src/code.js`, `src/stats.js`) ;
-- les 152 tests unitaires et le banc d'essai de bout en bout dans Chrome (`tools/e2e-chrome.mjs`).
+- taking over the rules of GNOME Tetravex and the game logic (`src/puzzle.js`);
+- the two board shapes added to the original game, hexagonal and truncated square (`src/geopuzzle.js`, `src/geoview.js`), and the Insane mode, where the tiles rotate;
+- the interface, touch, mouse and keyboard gestures, accessibility, the four theme families, light and dark (including Gens Claudia and 源氏 Uji Minamoto);
+- the installable web app and its offline operation (`sw.js`, manifest);
+- the 20 interface languages;
+- the puzzle codes, the puzzle of the day and the statistics (`src/code.js`, `src/stats.js`);
+- the 153 unit tests and the end-to-end test bench in Chrome (`tools/e2e-chrome.mjs`).
 
-Autres contributions :
+Other contributions:
 
-- **L'Auctor** a supervisé le projet.
-- **Claudius**, Primus inter Pares de la Gens Claudia, a relu l'ensemble du code. Il a aussi publié ce dépôt sur GitHub.
-- **Les auteurs de GNOME Tetravex**, dont le jeu est à l'origine de ce portage : Robert Ancell (2010–2013), Arnaud Bonatti (2019) et les Tetravex Contributors (1998–2025). Voir `NOTICE.md`.
+- **The Auctor** supervised the project.
+- **Claudius**, Primus inter Pares of the Gens Claudia, reviewed all of the code. He also published this repository on GitHub.
+- **The authors of GNOME Tetravex**, whose game is the origin of this port: Robert Ancell (2010–2013), Arnaud Bonatti (2019) and the Tetravex Contributors (1998–2025). See `NOTICE.md`.
 
-Les traductions ont été écrites par Drusus. Aucune n'a encore été relue par une personne dont c'est la langue, en particulier l'arabe, l'hindi et le latin : les corrections sont bienvenues.
+The translations were written by Drusus. None has yet been proofread by a native speaker, in particular Arabic, Hindi and Latin: corrections are welcome.
 
-## But du jeu original 
+## Goal of the original game
 
-Réordonner les tuiles dans un carré pour que les nombres des côtés en contact soient égaux.
+Rearrange the tiles in a square so that the numbers on touching edges are equal.
 
-## Modes de jeu
+## Game modes
 
-- **Carré** : le plateau classique de GNOME Tetravex, de 2×2 à 6×6.
-- **Hexagonal** : tuiles hexagonales à 6 nombres, 4×3, 6×4 ou 7×5 (colonnes × lignes), la deuxième colonne décalée d'une demi-hauteur vers le bas.
-- **Carré tronqué** : octogones (8 nombres) et petits carrés (4 nombres), 3×3, 4×4 ou 5×5 octogones ; chaque sorte de tuile ne va que sur sa sorte de case.
-- **Insane** (avec n'importe quelle forme) : les tuiles peuvent tourner. Double toucher une tuile pour passer en mode rotation
-  (repère ↻), puis la balayer en cercle autour de son centre (souris : clic maintenu) ; au clavier, R et Maj+R. Dans la zone de
-  jeu, une rotation qui désemboîte la tuile est refusée. Une partie Insane est sauvegardée à part de la partie normale, avec ses
-  propres meilleurs temps.
+- **Square**: the classic GNOME Tetravex board, from 2×2 to 6×6.
+- **Hexagonal**: hexagonal tiles with 6 numbers, 4×3, 6×4 or 7×5 (columns × rows), the second column shifted down by half a height.
+- **Truncated square**: octagons (8 numbers) and small squares (4 numbers), 3×3, 4×4 or 5×5 octagons; each kind of tile only fits its own kind of cell.
+- **Insane** (with any shape): the tiles can rotate. Double-tap a tile to switch to rotation mode (↻ marker), then sweep it in a circle around its centre (mouse: hold the button down); on the keyboard, R and Shift+R. In the play area, a rotation that would unfit the tile is refused. An Insane game is saved separately from the normal game, with its own best times.
 
-## Codes de puzzle, puzzle du jour, statistiques
+## Puzzle codes, puzzle of the day, statistics
 
-- **Code de puzzle** (idée de 1-5731N) : chaque partie a un code `012G-7K3F-9A2H`, affiché sous la barre du haut (le toucher le copie)
-  et rappelé à la victoire. Il contient la forme, la taille, le nombre de valeurs, le mode Insane et une graine ; le saisir
-  (Nouvelle partie › Jouer avec un code) rejoue exactement le même plateau. Une somme de contrôle détecte les fautes de frappe.
-  Le détail du format et la règle « un code ne change jamais de puzzle » sont dans `src/code.js` ; `test/code.test.js` fige
-  des puzzles de référence.
-- **Puzzle du jour** : dérivé de la date locale et de la configuration choisie (forme, taille, valeurs, mode), donc identique pour
-  tous ceux qui jouent la même configuration le même jour ; il change à minuit.
-- **Statistiques** (remplacent les « meilleurs temps ») : parties gagnées et commencées, meilleur temps, moyenne, par forme puis
-  par taille et mode, dernières parties avec leur code. Les anciens meilleurs temps sont repris une fois au premier lancement.
+- **Puzzle code** (an idea from 1-5731N): every game has a code `012G-7K3F-9A2H`, shown under the top bar (tapping it copies it) and recalled on victory. It contains the shape, the size, the number of values, the Insane mode and a seed; typing it in (New game › Play with a code) replays exactly the same board. A checksum catches typing mistakes. The format and the rule "a code never changes puzzle" are in `src/code.js`; `test/code.test.js` pins reference puzzles.
+- **Puzzle of the day**: derived from the local date and the chosen configuration (shape, size, values, mode), so it is the same for everyone who plays the same configuration on the same day; it changes at midnight.
+- **Statistics** (they replace the "best times"): games won and started, best time, average, by shape and then by size and mode, latest games with their code. The old best times are carried over once at first launch.
 
-## État
+## Status
 
-Version 1.0.0 : logique du jeu testée, interface en écrans avec thèmes et 20 langues, PWA installable et utilisable hors ligne, trois formes de plateau, mode Insane, codes de puzzle, puzzle du jour et statistiques.
-Voir `docs/PLAN.md` et `CHANGELOG.md`.
+Version 1.0.1: tested game logic, screen-based interface with themes and 20 languages, installable PWA that works offline, three board shapes, Insane mode, puzzle codes, puzzle of the day and statistics.
+See `docs/PLAN.md` and `CHANGELOG.md`.
 
-## Développer
+## Development
 
-Aucune étape de construction n'est requise : les modules sont des modules ES natifs.
+No build step is required: the modules are native ES modules.
 
 ```
-npm test            # tests unitaires (node --test), sans navigateur
-npm run e2e         # banc d'essai de bout en bout dans Chrome (voir ci-dessous)
+npm test            # unit tests (node --test), no browser
+npm run e2e         # end-to-end test bench in Chrome (see below)
 ```
 
-`npm run e2e` (`tools/e2e-chrome.mjs`) pilote un Chrome sans interface par DevTools : il sert le dépôt sur un port libre,
-joue les gestes réels (glisser, double toucher, balayage circulaire, deuxième doigt), le clavier, le chronomètre, les
-sauvegardes et les classements, dans les trois formes et les deux modes. Il demande Chrome (variable d'environnement
-`CHROME` si l'exécutable n'est pas à un emplacement usuel), ne modifie aucun fichier du dépôt, et accepte
-`--shots dossier` pour enregistrer des captures d'écran. Il n'est pas déployé (hors de `FILES` du service worker).
+`npm run e2e` (`tools/e2e-chrome.mjs`) drives a headless Chrome through DevTools: it serves the repository on a free port and plays the real gestures (drag, double-tap, circular sweep, second finger), the keyboard, the timer, the saves and the rankings, in the three shapes and both modes. It needs Chrome (environment variable `CHROME` if the executable is not in a usual place), modifies no file of the repository, and accepts `--shots folder` to save screenshots. It is not deployed (outside the service worker's `FILES`).
