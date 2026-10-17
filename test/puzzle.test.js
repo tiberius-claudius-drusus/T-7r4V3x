@@ -1,5 +1,5 @@
 /*
- * Tetravex PWA — tests de la logique du jeu. Licence : GPL-2.0-or-later (voir LICENSE).
+ * Tetravex PWA — tests de la logique du jeu. Licence : GPL-2.0-or-later (voir LICENSE.txt).
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

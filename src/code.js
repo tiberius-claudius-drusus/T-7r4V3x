@@ -1,6 +1,6 @@
 /*
  * T-7r4V3x — codes de puzzle (« empreintes de plateau »), générateur à graine, puzzle du jour
- * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE).
+ * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE.txt).
  *
  * Idée reprise de 1-5731N (Gens Claudia) : un puzzle est entièrement déterminé par un petit code, ce qui permet de le
  * rejouer, de le partager, et d'en tirer un « puzzle du jour » identique pour tous.

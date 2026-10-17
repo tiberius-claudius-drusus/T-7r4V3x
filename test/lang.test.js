@@ -1,6 +1,6 @@
 /*
  * T-7r4V3x — tests des traductions : mêmes clés, mêmes {marques}, pas de HTML, registre cohérent avec les fichiers.
- * Licence : GPL-2.0-or-later (voir LICENSE).
+ * Licence : GPL-2.0-or-later (voir LICENSE.txt).
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

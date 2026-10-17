@@ -1,4 +1,4 @@
-/* T-7r4V3x — 日本語。GPL-2.0-or-later（LICENSE を参照）。 */
+/* T-7r4V3x — 日本語。GPL-2.0-or-later（LICENSE.txt を参照）。 */
 export default {
   "home.sub": "ポケットの中の GNOME Tetravex",
   "home.new": "新しいゲーム",

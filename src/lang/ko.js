@@ -1,4 +1,4 @@
-/* T-7r4V3x — 한국어. GPL-2.0-or-later (LICENSE 참조). */
+/* T-7r4V3x — 한국어. GPL-2.0-or-later (LICENSE.txt 참조). */
 export default {
   "home.sub": "주머니 속의 GNOME Tetravex",
   "home.new": "새 게임",

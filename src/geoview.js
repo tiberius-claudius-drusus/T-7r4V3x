@@ -1,6 +1,6 @@
 /*
  * T-7r4V3x — géométrie d'affichage des modes hexagonal et carré tronqué (formes, positions, dégradés).
- * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE).
+ * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE.txt).
  *
  * Toutes les longueurs sont en « unités de c » : c = hauteur d'un hexagone, ou côté de la boîte d'un octogone.
  * L'interface multiplie par la valeur de c (en pixels) qu'elle a calculée pour tenir dans l'écran.

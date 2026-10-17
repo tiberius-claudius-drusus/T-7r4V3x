@@ -6,7 +6,7 @@
  *
  * Ce programme est un logiciel libre ; vous pouvez le redistribuer et/ou le modifier selon les termes de la
  * Licence Publique Générale GNU, version 2 ou (à votre choix) toute version ultérieure.
- * Il est distribué sans aucune garantie. Voir le fichier LICENSE.
+ * Il est distribué sans aucune garantie. Voir le fichier LICENSE.txt.
  *
  * Logique du jeu, sans interface. Plateau de 2*size colonnes sur size lignes :
  *   - colonnes [0, size)      : zone de jeu (cible), où les tuiles doivent s'emboîter ;

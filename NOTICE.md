@@ -3,7 +3,7 @@
 Ce dépôt est un **travail dérivé** de GNOME Tetravex :
 
 - Projet amont : https://gitlab.gnome.org/GNOME/gnome-tetravex
-- Licence amont : GNU General Public License, version 2 ou ultérieure (fichier `COPYING` de l'amont, repris dans `LICENSE`).
+- Licence amont : GNU General Public License, version 2 ou ultérieure (fichier `COPYING` de l'amont, repris dans `LICENSE.txt`).
 - Version de référence du portage : commit amont `95c138b` (2026-10-06).
 
 Tout fichier de ce dépôt qui reprend ou adapte du code amont doit porter en tête la mention :

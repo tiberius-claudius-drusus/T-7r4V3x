@@ -1,5 +1,5 @@
 /*
- * T-7r4V3x — tests des codes de puzzle, du générateur à graine et du puzzle du jour. Licence : GPL-2.0-or-later (voir LICENSE).
+ * T-7r4V3x — tests des codes de puzzle, du générateur à graine et du puzzle du jour. Licence : GPL-2.0-or-later (voir LICENSE.txt).
  *
  * Les « puzzles de référence » ci-dessous FIGENT l'algorithme de génération de la version 1 : si l'un d'eux échoue, un
  * changement a modifié le plateau d'un code existant. Ne pas « corriger » la valeur attendue : créer la version 2 du code

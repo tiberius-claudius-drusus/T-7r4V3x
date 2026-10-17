@@ -1,6 +1,6 @@
 /*
  * T-7r4V3x — logo : un carré de 2×2 tuiles déjà résolu (les bords en contact sont égaux), dessiné en SVG
- * avec les couleurs du thème courant (variables --tile-N). Licence : GPL-2.0-or-later (voir LICENSE).
+ * avec les couleurs du thème courant (variables --tile-N). Licence : GPL-2.0-or-later (voir LICENSE.txt).
  */
 
 // [nord, est, sud, ouest] ; A=haut-gauche, B=haut-droite, C=bas-gauche, D=bas-droite.

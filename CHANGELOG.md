@@ -3,6 +3,13 @@
 Format : une entrée par version, la plus récente en premier. La première entrée doit correspondre à
 `src/version.js` et `package.json` (test `test/version.test.js`).
 
+## [1.0.1] - 2026-10-17
+
+Correction. Le lien « Licence » de l'écran « À propos » téléchargeait le fichier au lieu de l'afficher : un fichier sans extension
+est servi en `application/octet-stream` (constaté sur GitHub Pages après la publication de la 1.0.0). Le fichier de licence est
+maintenant `LICENSE.txt`, servi en `text/plain` ; GitHub le reconnaît toujours comme la licence du dépôt. Les références
+(lien, liste du service worker, README, NOTICE, en-têtes des fichiers) sont mises à jour. Aucun autre changement de comportement.
+
 ## [1.0.0] - 2026-10-16
 
 Première version publiée. Le projet a vécu en `0.y.z` pendant son développement (historique ci-dessous) ; cette version ne

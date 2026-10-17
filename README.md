@@ -7,7 +7,7 @@
 ## Origine et licence
 
 T-7r4V3x est un portage de [GNOME Tetravex](https://gitlab.gnome.org/GNOME/gnome-tetravex) (Copyright © Robert Ancell 2010–2013, Arnaud Bonatti 2019, Tetravex Contributors 1998–2025), publié sous **GNU General Public License, version 2 ou ultérieure**.
-Le portage est distribué sous la même licence : voir `LICENSE`. Détail de l'origine : `NOTICE.md`.
+Le portage est distribué sous la même licence : voir `LICENSE.txt`. Détail de l'origine : `NOTICE.md`.
 
 ## Crédits
 

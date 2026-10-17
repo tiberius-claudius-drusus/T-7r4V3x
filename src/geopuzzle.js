@@ -3,7 +3,7 @@
  * Copyright (C) 2026 Drusus (Gens Claudia)
  *
  * Ce programme est un logiciel libre ; vous pouvez le redistribuer et/ou le modifier selon les termes de la
- * Licence Publique Générale GNU, version 2 ou (à votre choix) toute version ultérieure. Voir LICENSE.
+ * Licence Publique Générale GNU, version 2 ou (à votre choix) toute version ultérieure. Voir LICENSE.txt.
  * Règles reprises de GNOME Tetravex (Robert Ancell 2010-2013, Arnaud Bonatti 2019, Tetravex Contributors) : on
  * place des tuiles dont les côtés en contact doivent porter le même nombre ; les tuiles ne tournent pas, sauf en
  * mode Insane (rotation par crans : voir `rotate`, `canRotate`, `rotateTile`).

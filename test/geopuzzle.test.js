@@ -1,5 +1,5 @@
 /*
- * T-7r4V3x — tests des modes hexagonal et carré tronqué. Licence : GPL-2.0-or-later (voir LICENSE).
+ * T-7r4V3x — tests des modes hexagonal et carré tronqué. Licence : GPL-2.0-or-later (voir LICENSE.txt).
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

@@ -1,5 +1,5 @@
 /*
- * T-7r4V3x — cohérence PWA : manifeste, service worker, icônes, version. Licence : GPL-2.0-or-later (voir LICENSE).
+ * T-7r4V3x — cohérence PWA : manifeste, service worker, icônes, version. Licence : GPL-2.0-or-later (voir LICENSE.txt).
  * Garde-fou contre le « cache périmé » : version de sw.js = version de src/version.js, et tout fichier utile est
  * dans la liste de mise en cache.
  */
@@ -32,9 +32,16 @@ test('tous les fichiers de src/ et les fichiers de la page sont mis en cache', (
   for (const f of readdirSync(new URL('src/lang/', root)).filter((n) => n.endsWith('.js'))) {
     assert.ok(files.includes(`src/lang/${f}`), `src/lang/${f} absent de la liste de cache`);
   }
-  for (const f of ['index.html', 'app.js', 'manifest.webmanifest', 'LICENSE']) {
+  for (const f of ['index.html', 'app.js', 'manifest.webmanifest', 'LICENSE.txt']) {
     assert.ok(files.includes(f), `${f} absent de la liste de cache`);
   }
+});
+
+test('le lien « Licence » vise un fichier .txt (un fichier sans extension serait téléchargé, pas affiché)', () => {
+  const cible = read('app.js').match(/anchor\('([^']*LICEN[^']*)'/)[1];
+  assert.match(cible, /\.txt$/);
+  assert.ok(files.includes(cible), `${cible} absent de la liste de cache`);
+  assert.ok(existsSync(new URL(cible, root)), `${cible} absent du dépôt`);
 });
 
 test('les modules importés par app.js sont mis en cache', () => {

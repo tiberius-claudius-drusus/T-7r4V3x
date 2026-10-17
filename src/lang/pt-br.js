@@ -1,4 +1,4 @@
-/* T-7r4V3x — Português (Brasil). GPL-2.0-or-later (veja LICENSE). */
+/* T-7r4V3x — Português (Brasil). GPL-2.0-or-later (veja LICENSE.txt). */
 export default {
   "home.sub": "GNOME Tetravex, no seu bolso",
   "home.new": "Novo jogo",

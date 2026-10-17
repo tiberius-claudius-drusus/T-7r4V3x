@@ -5,7 +5,7 @@
  * Copyright (C) 2026 Drusus (Gens Claudia)
  *
  * Ce programme est un logiciel libre ; vous pouvez le redistribuer et/ou le modifier selon les termes de la
- * Licence Publique Générale GNU, version 2 ou (à votre choix) toute version ultérieure. Voir LICENSE.
+ * Licence Publique Générale GNU, version 2 ou (à votre choix) toute version ultérieure. Voir LICENSE.txt.
  *
  * Écrans (accueil, partie, aide, options, à propos), thèmes, sauvegarde. La logique du jeu est dans
  * src/puzzle.js ; les couleurs viennent de src/themes.js ; les textes de src/strings.js.
@@ -93,7 +93,7 @@ const anchor = (href, text) => `<a href="${href}" target="_blank" rel="noopener"
 function fragmentsFor(key) {
   if (key === 'about.licence') {
     const text = t('about.licence.link').replace(/&/g, '&amp;').replace(/</g, '&lt;');
-    return { link: anchor('LICENSE', text) };
+    return { link: anchor('LICENSE.txt', text) };
   }
   if (key === 'about.source') {
     return { files: ['index.html', 'app.js', 'src/puzzle.js'].map((f) => anchor(f, f)).join(', ') };

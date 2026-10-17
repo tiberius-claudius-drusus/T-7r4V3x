@@ -1,6 +1,6 @@
 /*
  * T-7r4V3x — service worker : fonctionnement hors ligne.
- * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE).
+ * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE.txt).
  *
  * Mise en cache de tous les fichiers à l'installation, puis « cache d'abord ». Le nom du cache porte la version :
  * une nouvelle version crée un nouveau cache et supprime les anciens. VERSION doit rester égale à src/version.js
@@ -8,7 +8,7 @@
  */
 'use strict';
 
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const CACHE = `t7r4v3x-${VERSION}`;
 const FILES = [
   './',
@@ -19,7 +19,7 @@ const FILES = [
   'icon-192.png',
   'icon-512.png',
   'icon-maskable-512.png',
-  'LICENSE',
+  'LICENSE.txt',
   'src/code.js',
   'src/geopuzzle.js',
   'src/geoview.js',

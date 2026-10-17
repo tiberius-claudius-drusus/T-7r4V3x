@@ -1,4 +1,4 @@
-/* T-7r4V3x — Latina. GPL-2.0-or-later (vide LICENSE). */
+/* T-7r4V3x — Latina. GPL-2.0-or-later (vide LICENSE.txt). */
 export default {
   "home.sub": "GNOME Tetravex in sinu tuo",
   "home.new": "Ludus novus",

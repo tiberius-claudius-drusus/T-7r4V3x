@@ -1,6 +1,6 @@
 /*
  * T-7r4V3x — pictogrammes des boutons (SVG en ligne, trait = couleur du texte du bouton).
- * Licence : GPL-2.0-or-later (voir LICENSE).
+ * Licence : GPL-2.0-or-later (voir LICENSE.txt).
  */
 const wrap = (body) =>
   `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">${body}</svg>`;

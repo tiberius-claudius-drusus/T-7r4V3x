@@ -1,4 +1,4 @@
-/* T-7r4V3x — 中文（简体）。GPL-2.0-or-later（见 LICENSE）。 */
+/* T-7r4V3x — 中文（简体）。GPL-2.0-or-later（见 LICENSE.txt）。 */
 export default {
   "home.sub": "口袋里的 GNOME Tetravex",
   "home.new": "新游戏",

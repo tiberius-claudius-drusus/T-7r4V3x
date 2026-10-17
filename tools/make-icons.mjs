@@ -1,7 +1,7 @@
 /*
  * T-7r4V3x — génère les icônes PNG de l'application (sans dépendance) : le logo (carré 2×2 résolu) aux
  * couleurs du thème « Épuré clair ». Usage : node tools/make-icons.mjs
- * Licence : GPL-2.0-or-later (voir LICENSE).
+ * Licence : GPL-2.0-or-later (voir LICENSE.txt).
  */
 import { deflateSync } from 'node:zlib';
 import { writeFileSync } from 'node:fs';

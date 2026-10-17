@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*
  * T-7r4V3x — banc d'essai de bout en bout dans Chrome (sans interface, piloté par DevTools).
- * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE).
+ * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE.txt).
  *
  * Ce que ne couvrent pas les tests unitaires (`npm test`) : l'interface réelle — gestes (glisser, double toucher,
  * balayage circulaire, deuxième doigt), clavier, chronomètre, sauvegardes, classements, accueil, affichage selon le thème.
@@ -15,7 +15,7 @@
  * Pièges connus (voir aussi les commentaires ci-dessous) :
  *  - l'application sauvegarde sa partie en quittant la page : poser un état de test par `reloadWith`, jamais par
  *    `localStorage.setItem` suivi d'un `reload` (la page sortante écraserait l'état) ;
- *  - ne pas passer par LICENSE (servi en application/octet-stream : Chrome le télécharge) ;
+ *  - LICENSE.txt est servi en text/plain par le serveur de test (le type MIME de .txt est déclaré ci-dessous) ;
  *  - `Input.dispatch*Event` est asynchrone : laisser une courte pause avant de lire le DOM.
  */
 import http from 'node:http';
@@ -44,7 +44,7 @@ if (!CHROME) {
   process.exit(2);
 }
 
-const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.png': 'image/png', '.webmanifest': 'application/manifest+json' };
+const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.png': 'image/png', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain; charset=utf-8' };
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
   if (p === '/') p = '/index.html';

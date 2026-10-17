@@ -1,4 +1,4 @@
-/* T-7r4V3x — Українська. GPL-2.0-or-later (див. LICENSE). */
+/* T-7r4V3x — Українська. GPL-2.0-or-later (див. LICENSE.txt). */
 export default {
   "home.sub": "GNOME Tetravex у вашій кишені",
   "home.new": "Нова гра",

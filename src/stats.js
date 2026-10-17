@@ -1,6 +1,6 @@
 /*
  * T-7r4V3x — statistiques : une liste de parties gagnées, résumée par forme, taille et mode.
- * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE).
+ * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE.txt).
  *
  * Fonctions pures sur une valeur JSON ; le stockage est fait par app.js. Remplace les « meilleurs temps » (scores.js) : on
  * garde chaque partie gagnée { d: date, t: ms, s: forme, n: taille, k: valeurs, i: 0|1 (Insane), c: code ou null }, et tous

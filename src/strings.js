@@ -2,7 +2,7 @@
  * T-7r4V3x — textes de l'interface. Le français (ci-dessous) est la langue de référence et le repli ; les autres
  * langues sont des modules `src/lang/<code>.js` de même forme, chargés à la demande (voir src/lang/index.js).
  * Aucun balisage HTML dans les textes : les liens sont fabriqués par le code et insérés à la place des {marques}.
- * Licence : GPL-2.0-or-later (voir LICENSE).
+ * Licence : GPL-2.0-or-later (voir LICENSE.txt).
  */
 export const FR = {
   'home.sub': 'GNOME Tetravex, en poche',

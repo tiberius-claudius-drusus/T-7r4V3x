@@ -1,4 +1,4 @@
-/* T-7r4V3x — English. GPL-2.0-or-later (see LICENSE). Same keys as src/strings.js (checked by test/lang.test.js). */
+/* T-7r4V3x — English. GPL-2.0-or-later (see LICENSE.txt). Same keys as src/strings.js (checked by test/lang.test.js). */
 export default {
   "home.sub": "GNOME Tetravex, in your pocket",
   "home.new": "New game",

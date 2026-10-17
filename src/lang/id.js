@@ -1,4 +1,4 @@
-/* T-7r4V3x — Bahasa Indonesia. GPL-2.0-or-later (lihat LICENSE). */
+/* T-7r4V3x — Bahasa Indonesia. GPL-2.0-or-later (lihat LICENSE.txt). */
 export default {
   "home.sub": "GNOME Tetravex di saku Anda",
   "home.new": "Permainan baru",

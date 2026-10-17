@@ -1,6 +1,6 @@
 /*
  * T-7r4V3x — registre des langues (les mêmes que 1-5731N) et chargement à la demande.
- * Licence : GPL-2.0-or-later (voir LICENSE).
+ * Licence : GPL-2.0-or-later (voir LICENSE.txt).
  */
 import { FR } from '../strings.js';
 

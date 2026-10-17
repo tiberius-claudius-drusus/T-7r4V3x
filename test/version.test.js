@@ -1,5 +1,5 @@
 /*
- * T-7r4V3x — cohérence de la version : src/version.js et CHANGELOG.md. Licence : GPL-2.0-or-later (voir LICENSE).
+ * T-7r4V3x — cohérence de la version : src/version.js et CHANGELOG.md. Licence : GPL-2.0-or-later (voir LICENSE.txt).
  * (Le nom de cache du service worker rejoindra ce test au jalon 3.)
  */
 import { test } from 'node:test';

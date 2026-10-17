@@ -1,4 +1,4 @@
-/* T-7r4V3x — Türkçe. GPL-2.0-or-later (bkz. LICENSE). */
+/* T-7r4V3x — Türkçe. GPL-2.0-or-later (bkz. LICENSE.txt). */
 export default {
   "home.sub": "GNOME Tetravex, cebinizde",
   "home.new": "Yeni oyun",

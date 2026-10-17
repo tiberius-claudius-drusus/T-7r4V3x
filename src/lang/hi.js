@@ -1,4 +1,4 @@
-/* T-7r4V3x — हिन्दी. GPL-2.0-or-later (देखें LICENSE). */
+/* T-7r4V3x — हिन्दी. GPL-2.0-or-later (देखें LICENSE.txt). */
 export default {
   "home.sub": "आपकी जेब में GNOME Tetravex",
   "home.new": "नया खेल",

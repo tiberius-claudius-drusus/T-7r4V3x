@@ -1,4 +1,4 @@
-/* T-7r4V3x — العربية. GPL-2.0-or-later (انظر LICENSE). */
+/* T-7r4V3x — العربية. GPL-2.0-or-later (انظر LICENSE.txt). */
 export default {
   "home.sub": "GNOME Tetravex في جيبك",
   "home.new": "لعبة جديدة",

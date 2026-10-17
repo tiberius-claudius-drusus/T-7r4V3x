@@ -1,4 +1,4 @@
-/* T-7r4V3x — Tiếng Việt. GPL-2.0-or-later (xem LICENSE). */
+/* T-7r4V3x — Tiếng Việt. GPL-2.0-or-later (xem LICENSE.txt). */
 export default {
   "home.sub": "GNOME Tetravex trong túi bạn",
   "home.new": "Ván mới",

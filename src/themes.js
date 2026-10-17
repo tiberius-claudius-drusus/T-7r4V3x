@@ -1,6 +1,6 @@
 /*
  * T-7r4V3x — portage de GNOME Tetravex : registre de thèmes
- * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE).
+ * Copyright (C) 2026 Drusus (Gens Claudia). Licence : GPL-2.0-or-later (voir LICENSE.txt).
  *
  * Un THÈME est une famille (« Épuré », « Aurora »…) qui propose des VARIANTES (« clair », « foncé »).
  * Chaque variante = des variables CSS posées sur la page. Aucune couleur n'est écrite en dur dans le code
