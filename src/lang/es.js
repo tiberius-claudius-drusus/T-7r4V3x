@@ -108,6 +108,7 @@ export default {
   "code.copy": "Copiar el código del puzle",
   "code.copied": "Código copiado",
   "code.is": "Código del puzle: {code}",
+  "code.placements": "Colocaciones: {n}",
   "dlg.abandon": "Ya hay una partida en curso en este modo. ¿Abandonarla?",
   "dlg.yesNew": "Abandonar",
   "help.code.h": "Códigos de puzle y puzle del día",

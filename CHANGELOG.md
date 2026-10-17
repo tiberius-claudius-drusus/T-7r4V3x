@@ -3,6 +3,10 @@
 Format : une entrée par version, la plus récente en premier. La première entrée doit correspondre à
 `src/version.js` et `package.json` (test `test/version.test.js`).
 
+## [1.1.0] - 2026-10-17
+
+Nouveauté. À côté du code du puzzle s'affiche le **nombre de placements possibles** des tuiles sur le plateau, en notation à trois chiffres (ex. « 3.63×10⁵ » pour un plateau carré 3×3). Sans rotation en mode normal ; avec les rotations en mode Insane (4 orientations par carré, 6 par hexagone, 8 par octogone). Les octogones et les petits carrés du plateau tronqué ne se mélangent pas, donc leurs dispositions se multiplient. Les tuiles sont comptées comme distinctes. Nouvelle chaîne `code.placements` dans les 20 langues ; `placementCount` et `engineering` dans `src/code.js` (testés).
+
 ## [1.0.1] - 2026-10-17
 
 Correction. Le lien « Licence » de l'écran « À propos » téléchargeait le fichier au lieu de l'afficher : un fichier sans extension

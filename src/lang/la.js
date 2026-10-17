@@ -108,6 +108,7 @@ export default {
   "code.copy": "Codicem aenigmatis exscribe",
   "code.copied": "Codex exscriptus",
   "code.is": "Codex aenigmatis: {code}",
+  "code.placements": "Dispositiones: {n}",
   "dlg.abandon": "Ludus iam in hoc modo agitur. Relinquere?",
   "dlg.yesNew": "Relinque",
   "help.code.h": "Codices aenigmatum et aenigma diei",

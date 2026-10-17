@@ -108,6 +108,7 @@ export default {
   "code.copy": "Copiar o código do quebra-cabeça",
   "code.copied": "Código copiado",
   "code.is": "Código do quebra-cabeça: {code}",
+  "code.placements": "Disposições: {n}",
   "dlg.abandon": "Já há uma partida em andamento neste modo. Abandoná-la?",
   "dlg.yesNew": "Abandonar",
   "help.code.h": "Códigos de quebra-cabeça e quebra-cabeça do dia",

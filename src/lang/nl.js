@@ -108,6 +108,7 @@ export default {
   "code.copy": "Puzzelcode kopiëren",
   "code.copied": "Code gekopieerd",
   "code.is": "Puzzelcode: {code}",
+  "code.placements": "Plaatsingen: {n}",
   "dlg.abandon": "In deze modus is al een partij bezig. Opgeven?",
   "dlg.yesNew": "Opgeven",
   "help.code.h": "Puzzelcodes en puzzel van de dag",

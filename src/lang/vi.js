@@ -108,6 +108,7 @@ export default {
   "code.copy": "Sao chép mã câu đố",
   "code.copied": "Đã sao chép mã",
   "code.is": "Mã câu đố: {code}",
+  "code.placements": "Cách xếp: {n}",
   "dlg.abandon": "Chế độ này đang có một ván. Bỏ ván đó?",
   "dlg.yesNew": "Bỏ",
   "help.code.h": "Mã câu đố và câu đố của ngày",

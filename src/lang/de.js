@@ -108,6 +108,7 @@ export default {
   "code.copy": "Puzzle-Code kopieren",
   "code.copied": "Code kopiert",
   "code.is": "Puzzle-Code: {code}",
+  "code.placements": "Anordnungen: {n}",
   "dlg.abandon": "In diesem Modus läuft bereits eine Partie. Abbrechen?",
   "dlg.yesNew": "Abbrechen",
   "help.code.h": "Puzzle-Codes und Puzzle des Tages",

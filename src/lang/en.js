@@ -108,6 +108,7 @@ export default {
   "code.copy": "Copy the puzzle code",
   "code.copied": "Code copied",
   "code.is": "Puzzle code: {code}",
+  "code.placements": "Placements: {n}",
   "dlg.abandon": "A game is already in progress in this mode. Abandon it?",
   "dlg.yesNew": "Abandon",
   "help.code.h": "Puzzle codes and puzzle of the day",

@@ -108,6 +108,7 @@ export default {
   "code.copy": "Salin kode teka-teki",
   "code.copied": "Kode disalin",
   "code.is": "Kode teka-teki: {code}",
+  "code.placements": "Penempatan: {n}",
   "dlg.abandon": "Sudah ada permainan yang berjalan di mode ini. Tinggalkan?",
   "dlg.yesNew": "Tinggalkan",
   "help.code.h": "Kode teka-teki dan teka-teki hari ini",

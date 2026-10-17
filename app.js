@@ -19,6 +19,7 @@ import { LANGUAGES, CODES, pickLanguage, loadLanguage, directionOf } from './src
 import { logoSvg } from './src/logo.js';
 import { VERSION, RELEASE_DATE } from './src/version.js';
 import { ICONS } from './src/icons.js';
+import { PLACEMENTS } from './src/placements.js';
 import { SHAPES, SIZES, COLORS, makeCode, parseCode, canonicalCode, typeCode, dailyCode, localDate, puzzleFromCode } from './src/code.js';
 import { emptyStats, cleanStats, addStarted, addGame, summarize, byShape, recent, bestFor, sizeLabel, gamesFromScores } from './src/stats.js';
 
@@ -837,10 +838,14 @@ const configOf = (insane) => ({ shape: options.shape, size: effectiveSize(option
 /** Affiche (ou masque) le code de la partie sous la barre ; le toucher le copie. */
 function showCode() {
   const b = $('g-code');
+  const p = $('g-place');
   const code = puzzle?.code ?? null;
   b.hidden = !code;
+  p.hidden = !code;
   b.classList.remove('copied');
   if (code) {
+    // Table calculée une fois pour toutes (tools/gen-placements.mjs) ; hors du bouton, pour que le toucher ne copie que le code.
+    p.textContent = t('code.placements', { n: PLACEMENTS[`${puzzle.shape}-${puzzle.size}-${puzzle.insane ? 1 : 0}`] });
     b.textContent = t('code.is', { code });
     b.setAttribute('aria-label', `${t('code.copy')} : ${code}`);
   }

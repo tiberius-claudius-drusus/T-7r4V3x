@@ -108,6 +108,7 @@ export default {
   "code.copy": "퍼즐 코드 복사",
   "code.copied": "코드를 복사했습니다",
   "code.is": "퍼즐 코드: {code}",
+  "code.placements": "배치 수: {n}",
   "dlg.abandon": "이 모드에서 이미 게임이 진행 중입니다. 포기할까요?",
   "dlg.yesNew": "포기",
   "help.code.h": "퍼즐 코드와 오늘의 퍼즐",

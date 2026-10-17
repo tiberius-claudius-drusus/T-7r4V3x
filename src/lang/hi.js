@@ -108,6 +108,7 @@ export default {
   "code.copy": "पहेली कोड कॉपी करें",
   "code.copied": "कोड कॉपी हो गया",
   "code.is": "पहेली कोड: {code}",
+  "code.placements": "व्यवस्थाएँ: {n}",
   "dlg.abandon": "इस मोड में पहले से एक खेल चल रहा है। उसे छोड़ दें?",
   "dlg.yesNew": "छोड़ें",
   "help.code.h": "पहेली कोड और आज की पहेली",

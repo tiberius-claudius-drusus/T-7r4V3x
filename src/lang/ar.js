@@ -108,6 +108,7 @@ export default {
   "code.copy": "نسخ رمز اللغز",
   "code.copied": "تم نسخ الرمز",
   "code.is": "رمز اللغز: {code}",
+  "code.placements": "الترتيبات: {n}",
   "dlg.abandon": "توجد جولة قيد اللعب في هذا الوضع. هل تتخلى عنها؟",
   "dlg.yesNew": "تخلَّ",
   "help.code.h": "رموز الألغاز ولغز اليوم",

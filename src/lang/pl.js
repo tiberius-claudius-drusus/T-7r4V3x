@@ -108,6 +108,7 @@ export default {
   "code.copy": "Skopiuj kod układanki",
   "code.copied": "Skopiowano kod",
   "code.is": "Kod układanki: {code}",
+  "code.placements": "Rozmieszczeń: {n}",
   "dlg.abandon": "W tym trybie trwa już gra. Porzucić ją?",
   "dlg.yesNew": "Porzuć",
   "help.code.h": "Kody układanek i układanka dnia",

@@ -108,6 +108,7 @@ export default {
   "code.copy": "Copia il codice del puzzle",
   "code.copied": "Codice copiato",
   "code.is": "Codice del puzzle: {code}",
+  "code.placements": "Disposizioni: {n}",
   "dlg.abandon": "In questa modalità è già in corso una partita. Abbandonarla?",
   "dlg.yesNew": "Abbandona",
   "help.code.h": "Codici dei puzzle e puzzle del giorno",

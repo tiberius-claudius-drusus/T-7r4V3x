@@ -108,6 +108,7 @@ export default {
   "code.copy": "パズルコードをコピー",
   "code.copied": "コードをコピーしました",
   "code.is": "パズルコード：{code}",
+  "code.placements": "配置の数：{n}",
   "dlg.abandon": "このモードではすでに対局中です。放棄しますか？",
   "dlg.yesNew": "放棄する",
   "help.code.h": "パズルコードと今日のパズル",

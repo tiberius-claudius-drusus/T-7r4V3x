@@ -23,7 +23,7 @@ Le portage est distribué sous la même licence : voir `LICENSE.txt`. Détail de
 - l'application web installable et son fonctionnement hors ligne (`sw.js`, manifeste) ;
 - les 20 langues de l'interface ;
 - les codes de puzzle, le puzzle du jour et les statistiques (`src/code.js`, `src/stats.js`) ;
-- les 153 tests unitaires et le banc d'essai de bout en bout dans Chrome (`tools/e2e-chrome.mjs`).
+- les 157 tests unitaires et le banc d'essai de bout en bout dans Chrome (`tools/e2e-chrome.mjs`).
 
 Autres contributions :
 
@@ -61,7 +61,7 @@ Réordonner les tuiles dans un carré pour que les nombres des côtés en contac
 
 ## État
 
-Version 1.0.1 : logique du jeu testée, interface en écrans avec thèmes et 20 langues, PWA installable et utilisable hors ligne, trois formes de plateau, mode Insane, codes de puzzle, puzzle du jour et statistiques.
+Version 1.1.0 : logique du jeu testée, interface en écrans avec thèmes et 20 langues, PWA installable et utilisable hors ligne, trois formes de plateau, mode Insane, codes de puzzle, puzzle du jour et statistiques.
 Voir `docs/PLAN.md` et `CHANGELOG.md`.
 
 ## Développer

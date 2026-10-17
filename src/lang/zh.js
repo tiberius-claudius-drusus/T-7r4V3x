@@ -108,6 +108,7 @@ export default {
   "code.copy": "复制谜题代码",
   "code.copied": "代码已复制",
   "code.is": "谜题代码：{code}",
+  "code.placements": "摆放方式：{n}",
   "dlg.abandon": "此模式下已有一局正在进行。要放弃吗？",
   "dlg.yesNew": "放弃",
   "help.code.h": "谜题代码与每日谜题",

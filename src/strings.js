@@ -113,6 +113,7 @@ export const FR = {
   'code.copy': 'Copier le code du puzzle',
   'code.copied': 'Code copié',
   'code.is': 'Code du puzzle : {code}',
+  'code.placements': 'Placements : {n}',
   'dlg.abandon': 'Une partie est déjà en cours dans ce mode. L\'abandonner ?',
   'dlg.yesNew': 'Abandonner',
   'help.code.h': 'Codes de puzzle et puzzle du jour',

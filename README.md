@@ -23,7 +23,7 @@ The port is distributed under the same licence: see `LICENSE.txt`. Details of th
 - the installable web app and its offline operation (`sw.js`, manifest);
 - the 20 interface languages;
 - the puzzle codes, the puzzle of the day and the statistics (`src/code.js`, `src/stats.js`);
-- the 153 unit tests and the end-to-end test bench in Chrome (`tools/e2e-chrome.mjs`).
+- the 157 unit tests and the end-to-end test bench in Chrome (`tools/e2e-chrome.mjs`).
 
 Other contributions:
 
@@ -52,7 +52,7 @@ Rearrange the tiles in a square so that the numbers on touching edges are equal.
 
 ## Status
 
-Version 1.0.1: tested game logic, screen-based interface with themes and 20 languages, installable PWA that works offline, three board shapes, Insane mode, puzzle codes, puzzle of the day and statistics.
+Version 1.1.0: tested game logic, screen-based interface with themes and 20 languages, installable PWA that works offline, three board shapes, Insane mode, puzzle codes, puzzle of the day and statistics.
 See `docs/PLAN.md` and `CHANGELOG.md`.
 
 ## Development

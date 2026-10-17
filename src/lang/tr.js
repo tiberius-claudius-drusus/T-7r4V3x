@@ -108,6 +108,7 @@ export default {
   "code.copy": "Bulmaca kodunu kopyala",
   "code.copied": "Kod kopyalandı",
   "code.is": "Bulmaca kodu: {code}",
+  "code.placements": "Yerleşim: {n}",
   "dlg.abandon": "Bu modda zaten bir oyun sürüyor. Bırakılsın mı?",
   "dlg.yesNew": "Bırak",
   "help.code.h": "Bulmaca kodları ve günün bulmacası",

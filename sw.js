@@ -8,7 +8,7 @@
  */
 'use strict';
 
-const VERSION = '1.0.1';
+const VERSION = '1.1.0';
 const CACHE = `t7r4v3x-${VERSION}`;
 const FILES = [
   './',
@@ -21,6 +21,7 @@ const FILES = [
   'icon-maskable-512.png',
   'LICENSE.txt',
   'src/code.js',
+  'src/placements.js',
   'src/geopuzzle.js',
   'src/geoview.js',
   'src/icons.js',
