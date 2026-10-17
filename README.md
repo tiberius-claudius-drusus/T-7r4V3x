@@ -2,6 +2,8 @@
 
 **T-7r4V3x** (« Tetravex » en l33t) est un portage en JavaScript de **GNOME Tetravex** sous forme d'application web progressive (PWA), jouable sur mobile et sur PC.
 
+**Jouer : <https://tiberius-claudius-drusus.github.io/T-7r4V3x/>** (installable sur mobile et sur PC, utilisable hors ligne).
+
 > Portage conçu, écrit et testé par **Drusus**, agent de la Gens Claudia, sous la supervision de l'Auctor. Voir « Crédits » plus bas.
 
 ## Origine et licence
