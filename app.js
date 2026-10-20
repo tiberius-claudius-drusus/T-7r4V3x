@@ -786,7 +786,10 @@ function table(headers, rows, classes = [], className = '') {
     const tr = el('tr', null, classes[i]);
     for (const c of cells) {
       const td = el('td');
-      if (Array.isArray(c)) { td.append(c[0]); td.append(el('small', c[1])); } else td.textContent = c;
+      if (Array.isArray(c)) {
+        td.append(c[0]);
+        if (c[2]) td.append(copyButton(c[1])); else td.append(el('small', c[1]));
+      } else td.textContent = c;
       tr.append(td);
     }
     tb.append(tr);
@@ -826,7 +829,7 @@ function renderStats() {
   body.append(el('h3', t('stats.last')));
   body.append(table(null, recent(games).map((g) => [
     dayLabel(g.d),
-    g.c ? [configLabel({ shape: g.s, size: g.n, insane: g.i === 1 }), g.c] : configLabel({ shape: g.s, size: g.n, insane: g.i === 1 }),
+    g.c ? [configLabel({ shape: g.s, size: g.n, insane: g.i === 1 }), g.c, true] : configLabel({ shape: g.s, size: g.n, insane: g.i === 1 }),
     formatTime(g.t),
   ]), [], 'recent'));
 }
@@ -850,27 +853,43 @@ function showCode() {
     b.setAttribute('aria-label', `${t('code.copy')} : ${code}`);
   }
 }
+/** Copie un texte dans le presse-papiers (repli : textarea + execCommand). Renvoie true si la copie a réussi. */
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); return true; } catch { /* repli ci-dessous */ }
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.cssText = 'position:fixed;opacity:0';
+  document.body.append(ta);
+  ta.select();
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch { ok = false; }
+  ta.remove();
+  return ok;
+}
 async function copyCode() {
   const code = puzzle?.code;
   if (!code) return;
-  let ok = false;
-  try { await navigator.clipboard.writeText(code); ok = true; } catch { /* repli ci-dessous */ }
-  if (!ok) {
-    const ta = document.createElement('textarea');
-    ta.value = code;
-    ta.setAttribute('readonly', '');
-    ta.style.cssText = 'position:fixed;opacity:0';
-    document.body.append(ta);
-    ta.select();
-    try { ok = document.execCommand('copy'); } catch { ok = false; }
-    ta.remove();
-  }
-  if (ok) {
+  if (await copyText(code)) {
     announce(t('code.copied'));
     $('g-code').classList.add('copied');
     $('g-code').textContent = t('code.copied');
     setTimeout(showCode, 1500);
   }
+}
+/** Code d'une ligne de « Dernières parties » : un toucher le copie. */
+function copyButton(code) {
+  const b = el('button', code, 'codecopy');
+  b.type = 'button';
+  b.setAttribute('aria-label', `${t('code.copy')} : ${code}`);
+  b.addEventListener('click', async () => {
+    if (!(await copyText(code))) return;
+    announce(t('code.copied'));
+    b.textContent = t('code.copied');
+    b.classList.add('copied');
+    setTimeout(() => { b.textContent = code; b.classList.remove('copied'); }, 1500);
+  });
+  return b;
 }
 
 /** « Nouvelle partie » : aléatoire, puzzle du jour (de la configuration choisie) ou saisie d'un code. */

@@ -3,6 +3,10 @@
 Format : une entrée par version, la plus récente en premier. La première entrée doit correspondre à
 `src/version.js` et `package.json` (test `test/version.test.js`).
 
+## [1.2.1] - 2026-10-20
+
+Dans **Dernières parties** (statistiques), le code de chaque partie se copie d'un toucher (comme sous la barre en cours de partie) : le code devient un bouton qui affiche « Code copié » un instant. La copie est partagée entre les deux endroits (`copyText`, avec repli pour les navigateurs sans presse-papiers).
+
 ## [1.2.0] - 2026-10-17
 
 Nouveau mode de plateau : **8/4gone**, un damier de 3×3 ou 5×5 cases (normal et Insane). Les cases de même parité reçoivent un octogone, les autres un carré droit ; les octogones se touchent par leurs côtés en biais et chaque octogone est entouré de 4 carrés (3×3 : 5 octogones et 4 carrés ; 5×5 : 13 octogones et 12 carrés). Même règle que le carré tronqué : chaque sorte de tuile ne va que sur sa sorte de case. Le code de puzzle gagne une valeur de forme (la dernière : les codes déjà partagés ne changent pas) ; les nombres de placements possibles sont recalculés (tableau généré, 26 entrées) ; nom et aide de la forme dans les 20 langues (traductions de ma main, sans relecture native). Deux puzzles de référence figent l'algorithme, le banc Chrome joue une partie 8/4gone.

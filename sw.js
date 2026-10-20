@@ -8,7 +8,7 @@
  */
 'use strict';
 
-const VERSION = '1.2.0';
+const VERSION = '1.2.1';
 const CACHE = `t7r4v3x-${VERSION}`;
 const FILES = [
   './',
